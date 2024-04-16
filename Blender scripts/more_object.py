@@ -4,13 +4,13 @@ import sys
 import os
 import numpy
 
+'''
 max_middle_poin = (-0.049776, -1.1891, 4.5373)
 min_middle_poin = (-0.049775, -3.3185, 1.0538)
-
+'''
 #choose Y lenght
 soly = sys.argv[7]
 sol = float(soly)
-
 
 #choose number of count 
 number = sys.argv[6]
@@ -20,16 +20,12 @@ count = int(number)
 #set number of count
 bpy.data.node_groups["Geometry Nodes.001"].nodes["Resample Curve"].inputs[2].default_value = count
 
-#передача значения напрямую в ноду
 #bpy.data.node_groups["Geometry Nodes.001"].nodes["Instance on Points"].inputs[6].default_value[1] = sol
 bpy.context.object.modifiers["GeometryNodes"]["Socket_3"][1] = sol
 
+#if need run script in Blender
+#bpy.ops.import_scene.gltf(filepath="C:\\path to file\\")
 
-'''
-#для работы из под Blender
-bpy.ops.import_scene.gltf(filepath="C:\\python enjoyer\\test_p_3.glb")
-
-'''
 
 #choose file
 file_path = sys.argv[5]
@@ -103,7 +99,7 @@ bpy.data.objects.remove(object_to_delete, do_unlink=True)
 
 
 #star adding atribute point
-
+'''
 obj = bpy.data.objects["Curve"]
 
 # Установите объект как активный
@@ -142,7 +138,7 @@ attribute_values[num_vertices - 2:] = [1, 1]
 attribute.data.foreach_set("value", attribute_values)
 
 bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
-
+'''
 
 #export
 blend_file_path = file_path
