@@ -1,0 +1,21 @@
+Python script for generating strap with Blender. (ver.4.0.2)
+
+Script used Geometry Nodes in Blender.
+
+Run in VS code:
+1. Need to run this script from the Blender directory.
+
+2. In command line:
+".\blender.exe -b "C:\path to blender file" --python  "C:\path to python file" "C:\path to plane" 100 0.3 1 0.5"
+
+3. 100 - is the number of counts; 0.3 - length plane Y; 1 - length plane X; 0.5 - thickness.
+
+4. For example:
+C:\Program Files\Blender Foundation\Blender 4.0> .\blender.exe -b "C:\Python\Blender main\Strap_m.blend" --python  "C:\Python\Blender scripts\main script.py" "C:\Python\test\test_p_3.glb" 40 0.3 1 0.25
+
+5. Script create 3D model in directory where place base 3D model with name: "Strap_New"
+
+
+Run in Blender:
+1. Delete or commend #thickness, # choose X length, #choose Y length, #choose number of count, #set number of count, #sol, #len, #choose file. And change "th" -> "1" in #solidify
+2. in 43 lines choose manually 3D file.

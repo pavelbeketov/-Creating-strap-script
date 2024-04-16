@@ -4,6 +4,21 @@ import sys
 import os
 import numpy
 
+#upd position points
+'''
+max_middle_poin = (-0.049776, -1.5393, 6.6589)
+min_middle_poin = (-0.049775, -3.3966, 3.3491)
+'''
+
+#thickness
+thickness = sys.argv[9]
+th = float(thickness)
+
+
+#choose X lenght
+leng  = sys.argv[8]
+len = float(leng)
+
 #choose Y lenght
 soly = sys.argv[7]
 sol = float(soly)
@@ -13,15 +28,19 @@ number = sys.argv[6]
 count = int(number)
 
 
+
 #set number of count
 bpy.data.node_groups["Geometry Nodes.001"].nodes["Resample Curve"].inputs[2].default_value = count
 
-#bpy.data.node_groups["Geometry Nodes.001"].nodes["Instance on Points"].inputs[6].default_value[1] = sol
+#sol
 bpy.context.object.modifiers["GeometryNodes"]["Socket_3"][1] = sol
+
+#len
+bpy.context.object.modifiers["GeometryNodes"]["Socket_3"][0] = len
+
 
 #if need run script in Blender
 #bpy.ops.import_scene.gltf(filepath="C:\\path to file\\")
-
 
 #choose file
 file_path = sys.argv[5]
@@ -65,12 +84,16 @@ bpy.ops.object.transform_apply()
 
 objects = bpy.context.scene.objects
 
+#remove extra triangle
+bpy.ops.object.editmode_toggle()
+bpy.ops.mesh.tris_convert_to_quads()
+bpy.ops.object.editmode_toggle()
+
 
 #solidify
 bpy.ops.object.modifier_add(type='SOLIDIFY')
-bpy.context.object.modifiers["Solidify"].thickness = 0.1
+bpy.context.object.modifiers["Solidify"].thickness = th
 bpy.ops.object.modifier_apply(modifier="Solidify")
-
 
 #bevel
 bpy.ops.object.modifier_add(type='BEVEL')
@@ -92,6 +115,7 @@ object_name = "Plane"
 object_to_delete = bpy.data.objects.get(object_name)
 
 bpy.data.objects.remove(object_to_delete, do_unlink=True)
+
 
 #export
 blend_file_path = file_path
