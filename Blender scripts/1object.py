@@ -33,10 +33,7 @@ object_to_delete = bpy.data.objects.get(object_name)
 bpy.data.objects.remove(object_to_delete, do_unlink=True)
 
 #export
-
 blend_file_path = file_path
 directory = os.path.dirname(blend_file_path)
-
 export_file_path = os.path.join(directory, "Strap_New") 
-
 bpy.ops.export_scene.gltf(filepath=export_file_path, use_selection=True)
