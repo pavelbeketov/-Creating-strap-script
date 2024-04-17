@@ -6,37 +6,36 @@ import numpy
 
 #upd position points
 '''
-max_middle_poin = (-0.049776, -1.5393, 6.6589)
-min_middle_poin = (-0.049775, -3.3966, 3.3491)
+max_middle_poin = (-0.049776, -1.3417, 6.7215)
+min_middle_poin = (-0.049775, -3.5286, 2.9707)
 '''
 
 #thickness
-thickness = sys.argv[9]
+thickness = sys.argv[7]
 th = float(thickness)
 
 
 #choose X lenght
-leng  = sys.argv[8]
-len = float(leng)
+#leng  = sys.argv[8]
+#len = float(leng)
 
 #choose Y lenght
-soly = sys.argv[7]
-sol = float(soly)
+#soly = sys.argv[7]
+#sol = float(soly)
 
 #choose number of count 
 number = sys.argv[6]
 count = int(number)
 
 
-
 #set number of count
 bpy.data.node_groups["Geometry Nodes.001"].nodes["Resample Curve"].inputs[2].default_value = count
 
 #sol
-bpy.context.object.modifiers["GeometryNodes"]["Socket_3"][1] = sol
+#bpy.context.object.modifiers["GeometryNodes"]["Socket_3"][1] = sol
 
 #len
-bpy.context.object.modifiers["GeometryNodes"]["Socket_3"][0] = len
+#bpy.context.object.modifiers["GeometryNodes"]["Socket_3"][0] = len
 
 
 #if need run script in Blender
@@ -80,7 +79,8 @@ object_to_rotate.rotation_euler[0] += math.radians(90)
 
 #resize
 bpy.ops.transform.resize(value=(0.01, 0.01, 0.01))
-bpy.ops.object.transform_apply()
+
+bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
 
 objects = bpy.context.scene.objects
 
@@ -105,6 +105,7 @@ bpy.ops.object.modifier_apply(modifier="Bevel")
 bpy.data.node_groups["Geometry Nodes.001"].nodes["Object Info"].inputs[0].default_value = bpy.data.objects["Plane"]
 
 bpy.ops.object.select_all(action='SELECT')
+bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
 
 #convert all scene in Mesh (bezie -> mesh)
 bpy.ops.object.convert(target='MESH')
