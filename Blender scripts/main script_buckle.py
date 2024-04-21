@@ -10,6 +10,11 @@ max_middle_poin = (-0.049776, -1.3417, 6.7215)
 min_middle_poin = (-0.049775, -3.5286, 2.9707)
 '''
 
+
+
+
+
+
 #thickness
 thickness = sys.argv[7]
 th = float(thickness)
